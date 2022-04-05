@@ -3,7 +3,8 @@
 This repository contains a script that can be used to create disks to be consumed by LocalVolumeProvisioner used by most DKP deployments. It requires a raw disk `>250G` to be attached to all the workder nodes. 
 
 # Pre-requisites:
-This method uses linux logicvolumes and thus requires the lvm2 module to be installed on the worker nodes where this will be execures
+- This method uses linux logicvolumes and thus requires the lvm2 module to be installed on the worker nodes where this will be execures
+- The commands run here need a user with privilege escalation capability
 
 > Note: The partition postfix for a raw disk (i.e. the dynamically generated postfix for name of the partition created when running fdisk) varies based on the disk type. e.g. for some running fdisk on a disk named `sdh` will create a partition named `sdh1` while some disk types will create a partition named `sdhp1`. This script uses the latter i.e. `p1` as the postfix. Change the value of `PART_POSTFIX` variable to change this behavior.
 
@@ -30,7 +31,7 @@ cat <<-'EOF' > configure_dkp_disks.sh
 ##Note This script accepts the name of the raw disk as an input parameter
 ## e.g. ./configure_dkp_disks.sh sdh
 ## Pre-req lvm2 module should be installed
-## sudo yum install -y lvm2
+#sudo yum install -y lvm2
 
 ## Change these as required #########
 #This is the name of the logical volume group to be used
