@@ -1,4 +1,4 @@
-```bash
+```
 cat <<-'EOF' > configure_small_disks.sh
 #!/bin/bash
 ##Note This script accepts the name of the raw disk as an input parameter
